@@ -26,6 +26,7 @@ cd php-$php_version
 --with-fpm-group=www-data \
 --with-pdo-mysql \
 --with-mysqli \
+--with-mysql \
 --with-mysql-sock=/var/lib/mysql/mysql.sock \
 --with-pgsql \
 --with-pdo-pgsql \
@@ -51,7 +52,7 @@ ln -sf /usr/local/php/bin/pecl /usr/local/bin/pecl
 
 # 配置php
 mv -f php.ini-production /usr/local/php/etc/php.ini
-sed -i 's,;include_path=.*,include_path=".:/usr/local/php-5.6.24/lib/php,g"' /usr/local/php/etc/php.ini
+sed -i 's,;include_path=.*,include_path=".:/usr/local/php-5.6.24/lib/php",g' /usr/local/php/etc/php.ini
 sed -i 's/;date.timezone =/date.timezone = PRC/g' /usr/local/php/etc/php.ini
 sed -i 's/;cgi.fix_pathinfo=.*/cgi.fix_pathinfo=0/g' /usr/local/php/etc/php.ini
 mv -f /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
