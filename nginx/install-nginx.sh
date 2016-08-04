@@ -39,3 +39,7 @@ rm -f /lib/systemd/system/nginx.service
 cp $cur_dir/nginx.service /lib/systemd/system/nginx.service
 systemctl enable nginx
 systemctl start nginx
+
+firewall-cmd --permanent --zone=public --add-service=http   # 允许http服务端口访问
+firewall-cmd --permanent --zone=public --add-service=https  # 允许https服务端口访问
+firewall-cmd --reload   # 重启防火墙服务
