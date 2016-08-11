@@ -5,7 +5,11 @@ php_version=5.6.24
 cur_dir=$(pwd)
 
 # 安装依赖
-yum -y install libxml2-devel openssl-devel libcurl-devel libmcrypt-devel gd-devel postgresql-devel libicu-devel
+yum update -y
+yum -y install epel-release
+yum update -y
+yum -y install libxml2-devel openssl-devel libcurl-devel gd-devel postgresql-devel libicu-devel gcc gcc-c++
+yum -y --enablerepo=epel install libmcrypt-devel
 
 # 编译安装
 groupadd www-data
