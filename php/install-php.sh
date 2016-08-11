@@ -36,7 +36,7 @@ cd php-$php_version
 --with-mcrypt \
 --with-openssl \
 --with-zip
-make && make install
+make -j4 && make install
 
 # 添加快捷方式
 rm -f /usr/local/php
@@ -68,6 +68,6 @@ cp $cur_dir/php-fpm.service /lib/systemd/system/
 systemctl enable php-fpm
 systemctl start php-fpm
 
-# 安装composer
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# 安装composer in 120 secs in case of GFW intervention
+curl -m120 -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 composer config -g repo.packagist composer https://packagist.phpcomposer.com   #添加中国全量镜像地址
